@@ -2,8 +2,8 @@ package com.vomiter.spidersshootwebs.mixin;
 
 import com.vomiter.neurolib.common.entity.IReasonTracker;
 import com.vomiter.neurolib.common.entity.NeuroLibReasons;
-import com.vomiter.neurolib.common.entity.movement.IMovementCache;
 import com.vomiter.spidersshootwebs.entity.ISpiderShootWebGoalAccess;
+import com.vomiter.spidersshootwebs.entity.IWebGetter;
 import com.vomiter.spidersshootwebs.entity.ai.SpiderShootWebGoal;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Spider;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Spider.class)
-public abstract class SpiderShootWebs_SpiderMixin implements ISpiderShootWebGoalAccess {
+public abstract class SpiderShootWebs_SpiderMixin implements ISpiderShootWebGoalAccess, IWebGetter {
 
     @Unique @Nullable
     private LivingEntity PREVIOUS_TARGET;

@@ -5,6 +5,7 @@ import com.vomiter.neurolib.common.entity.generic.ICooldownGoal;
 import com.vomiter.neurolib.common.entity.movement.MovementCacheHelper;
 import com.vomiter.spidersshootwebs.Config;
 import com.vomiter.spidersshootwebs.SpidersShootWebs;
+import com.vomiter.spidersshootwebs.entity.IWebGetter;
 import com.vomiter.spidersshootwebs.entity.WebProjectile;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -205,8 +206,9 @@ public final class SpiderShootWebGoal extends Goal implements ICooldownGoal {
 
     private void shootOnce(LivingEntity target) {
         if (spider.level().isClientSide) return;
+        if (!(spider instanceof IWebGetter webGetter)) return;
 
-        WebProjectile p = new WebProjectile(spider.level(), spider);
+        WebProjectile p = webGetter.getWeb();
 
         double sx = spider.getX();
         double sy = spider.getEyeY() - 0.1;

@@ -13,6 +13,7 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -89,7 +90,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     private void placeCobwebAtOrNearby(BlockPos center) {
         if (!(level() instanceof ServerLevel server)) return;
 
-        BlockState cobweb = Blocks.COBWEB.defaultBlockState();
+        BlockState cobweb = getWebBlock();
 
         // 優先：中心；其次：附近 6 面（避免命中在實體內/方塊內完全放不下）
         if (canPlaceCobweb(center)) {
@@ -120,5 +121,9 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     @Override
     public @NotNull ItemStack getItem() {
         return new ItemStack(Blocks.COBWEB);
+    }
+
+    public @NotNull BlockState getWebBlock(){
+        return Blocks.COBWEB.defaultBlockState();
     }
 }
