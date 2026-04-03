@@ -3,7 +3,7 @@ package com.vomiter.spidersshootwebs.client;
 import com.vomiter.spidersshootwebs.registry.ModEntities;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 public final class ClientModEvents {
 

@@ -3,19 +3,19 @@ package com.vomiter.spidersshootwebs.registry;
 import com.vomiter.spidersshootwebs.Helpers;
 import com.vomiter.spidersshootwebs.SpidersShootWebs;
 import com.vomiter.spidersshootwebs.entity.WebProjectile;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ModEntities {
     private ModEntities() {}
 
     public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, SpidersShootWebs.MOD_ID);
+            DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, SpidersShootWebs.MOD_ID);
 
-    public static final RegistryObject<EntityType<WebProjectile>> WEB_PROJECTILE =
+    public static final DeferredHolder<EntityType<?>, EntityType<WebProjectile>> WEB_PROJECTILE =
             ENTITIES.register("web_projectile", () ->
                     EntityType.Builder.<WebProjectile>of(WebProjectile::new, MobCategory.MISC)
                             .sized(0.25f, 0.25f)          // hitbox

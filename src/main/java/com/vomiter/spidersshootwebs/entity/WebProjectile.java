@@ -4,6 +4,7 @@ import com.vomiter.spidersshootwebs.Config;
 import com.vomiter.spidersshootwebs.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -114,16 +115,16 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     }
 
     @Override
-    protected void defineSynchedData() {
-
-    }
-
-    @Override
     public @NotNull ItemStack getItem() {
         return new ItemStack(Blocks.COBWEB);
     }
 
     public @NotNull BlockState getWebBlock(){
         return Blocks.COBWEB.defaultBlockState();
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        
     }
 }
