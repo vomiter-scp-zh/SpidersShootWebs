@@ -1,16 +1,16 @@
 package com.vomiter.spidersshootwebs;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class Helpers {
-    public static ResourceLocation id(String namespace, String path){
-        return ResourceLocation.fromNamespaceAndPath(namespace, path);
+    public static Identifier id(String namespace, String path){
+        return Identifier.fromNamespaceAndPath(namespace, path);
     }
 
-    public static ResourceLocation id(String path){
+    public static Identifier id(String path){
         return id(SpidersShootWebs.MOD_ID, path);
     }
-    public static ResourceLocation minecraftId(String path){
+    public static Identifier minecraftId(String path){
         return id("minecraft", path);
     }
 

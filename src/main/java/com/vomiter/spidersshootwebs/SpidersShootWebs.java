@@ -24,7 +24,7 @@ public class SpidersShootWebs
         modBus.addListener(this::commonSetup);
         mod.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         ModEntities.ENTITIES.register(modBus);
-        if(FMLEnvironment.dist.isClient()){
+        if(FMLEnvironment.getDist().isClient()){
             modBus.addListener(ClientModEvents::onClientSetup);
         }
     }

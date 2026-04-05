@@ -14,7 +14,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.spider.Spider;
 
 import java.util.EnumSet;
 
@@ -205,7 +205,7 @@ public final class SpiderShootWebGoal extends Goal implements ICooldownGoal {
     }
 
     private void shootOnce(LivingEntity target) {
-        if (spider.level().isClientSide) return;
+        if (spider.level().isClientSide()) return;
         if (!(spider instanceof IWebGetter webGetter)) return;
 
         WebProjectile p = webGetter.getWeb();

@@ -6,7 +6,7 @@ import com.vomiter.spidersshootwebs.entity.ISpiderShootWebGoalAccess;
 import com.vomiter.spidersshootwebs.entity.IWebGetter;
 import com.vomiter.spidersshootwebs.entity.ai.SpiderShootWebGoal;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.spider.Spider;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

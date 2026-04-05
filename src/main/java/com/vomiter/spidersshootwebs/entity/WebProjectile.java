@@ -14,7 +14,6 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -24,12 +23,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
 
-    public WebProjectile(EntityType<? extends WebProjectile> type, Level level) {
+    public WebProjectile(EntityType<? extends @NotNull WebProjectile> type, Level level) {
         super(type, level);
     }
 
     public WebProjectile(Level level, LivingEntity owner) {
-        super(ModEntities.WEB_PROJECTILE.get(), owner, level);
+        super(ModEntities.WEB_PROJECTILE.get(), level);
+        setOwner(owner);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
                 if(hit.getEntity() instanceof LivingEntity living){
                     living.addEffect(
                             new MobEffectInstance(
-                                    MobEffects.MOVEMENT_SLOWDOWN,
+                                    MobEffects.SLOWNESS,
                                     40, 1,
                                     false, false, true)
                             , getOwner());
@@ -64,7 +64,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     }
 
     @Override
-    protected void onHit(HitResult hit) {
+    protected void onHit(@NotNull HitResult hit) {
         super.onHit(hit);
     }
 
@@ -124,7 +124,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         
     }
 }
