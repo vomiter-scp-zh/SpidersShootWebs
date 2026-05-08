@@ -14,10 +14,12 @@ public final class Config {
     private static final ModConfigSpec.BooleanValue CAVE_SPIDER_CAN_SHOOT_WEB_SPEC;
     private static final ModConfigSpec.BooleanValue NORMAL_SPIDER_CAN_SHOOT_WEB_SPEC;
     private static final ModConfigSpec.BooleanValue APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE_SPEC;
+    private static final ModConfigSpec.BooleanValue TEMPORARY_WEB_BLOCKS_SPEC;
 
     public static boolean CAVE_SPIDER_CAN_SHOOT_WEB = true;
     public static boolean NORMAL_SPIDER_CAN_SHOOT_WEB = true;
     public static boolean APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE = false;
+    public static boolean TEMPORARY_WEB_BLOCKS = false;
 
     static {
         BUILDER.push("general");
@@ -33,6 +35,10 @@ public final class Config {
         APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE_SPEC = BUILDER
                 .comment("If true, targets hit by the cobweb projectile receive Slowness.")
                 .define("applySlownessWhenHitByCobwebProjectile", false);
+
+        TEMPORARY_WEB_BLOCKS_SPEC = BUILDER
+                .comment("If true, cobweb blocks placed by spider projectiles do not drop string when broken, and it will disappear after a period of time.")
+                .define("temporaryWebBlocks", false);
 
         BUILDER.pop();
     }
@@ -55,5 +61,6 @@ public final class Config {
         CAVE_SPIDER_CAN_SHOOT_WEB = CAVE_SPIDER_CAN_SHOOT_WEB_SPEC.get();
         NORMAL_SPIDER_CAN_SHOOT_WEB = NORMAL_SPIDER_CAN_SHOOT_WEB_SPEC.get();
         APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE = APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE_SPEC.get();
+        TEMPORARY_WEB_BLOCKS = TEMPORARY_WEB_BLOCKS_SPEC.get();
     }
 }

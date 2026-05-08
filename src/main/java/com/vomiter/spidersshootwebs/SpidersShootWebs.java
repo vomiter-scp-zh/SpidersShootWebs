@@ -2,6 +2,7 @@ package com.vomiter.spidersshootwebs;
 
 import com.mojang.logging.LogUtils;
 import com.vomiter.spidersshootwebs.client.ClientModEvents;
+import com.vomiter.spidersshootwebs.registry.ModBlocks;
 import com.vomiter.spidersshootwebs.registry.ModEntities;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -24,6 +25,7 @@ public class SpidersShootWebs
         modBus.addListener(this::commonSetup);
         mod.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         ModEntities.ENTITIES.register(modBus);
+        ModBlocks.BLOCKS.register(modBus);
         if(FMLEnvironment.dist.isClient()){
             modBus.addListener(ClientModEvents::onClientSetup);
         }
