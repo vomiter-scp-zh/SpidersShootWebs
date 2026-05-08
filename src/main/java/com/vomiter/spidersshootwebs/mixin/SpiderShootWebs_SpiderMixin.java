@@ -5,8 +5,11 @@ import com.vomiter.neurolib.common.entity.NeuroLibReasons;
 import com.vomiter.spidersshootwebs.entity.ISpiderShootWebGoalAccess;
 import com.vomiter.spidersshootwebs.entity.IWebGetter;
 import com.vomiter.spidersshootwebs.entity.ai.SpiderShootWebGoal;
+import com.vomiter.spidersshootwebs.registry.ModBlocks;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.spider.Spider;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -67,5 +70,10 @@ public abstract class SpiderShootWebs_SpiderMixin implements ISpiderShootWebGoal
                     spider.level().getGameTime() + 5
             );
         }
+    }
+
+    @Inject(method = "makeStuckInBlock", at = @At("HEAD"), cancellable = true)
+    private void spidersshootwebs$preventStuckTempWeb(BlockState state, Vec3 motionMultiplier, CallbackInfo ci){
+        if(state.is(ModBlocks.TEMP_WEB.get())) ci.cancel();
     }
 }

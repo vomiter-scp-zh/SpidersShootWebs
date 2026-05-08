@@ -1,6 +1,7 @@
 package com.vomiter.spidersshootwebs.entity;
 
 import com.vomiter.spidersshootwebs.Config;
+import com.vomiter.spidersshootwebs.registry.ModBlocks;
 import com.vomiter.spidersshootwebs.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -120,6 +122,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     }
 
     public @NotNull BlockState getWebBlock(){
+        if(Config.TEMPORARY_WEB_BLOCKS) return ModBlocks.TEMP_WEB.get().defaultBlockState();
         return Blocks.COBWEB.defaultBlockState();
     }
 

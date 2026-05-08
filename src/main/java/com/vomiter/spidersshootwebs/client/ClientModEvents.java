@@ -8,6 +8,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 public final class ClientModEvents {
 
     public static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> EntityRenderers.register(ModEntities.WEB_PROJECTILE.get(), ThrownItemRenderer::new));
+        event.enqueueWork(() -> {
+            EntityRenderers.register(ModEntities.WEB_PROJECTILE.get(), ThrownItemRenderer::new);
+        });
     }
 }
