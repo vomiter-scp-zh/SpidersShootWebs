@@ -1,6 +1,7 @@
 package com.vomiter.spidersshootwebs.entity;
 
 import com.vomiter.spidersshootwebs.Config;
+import com.vomiter.spidersshootwebs.registry.ModBlocks;
 import com.vomiter.spidersshootwebs.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -124,6 +125,7 @@ public class WebProjectile extends ThrowableProjectile implements ItemSupplier {
     }
 
     public @NotNull BlockState getWebBlock(){
+        if(Config.TEMPORARY_WEB_BLOCKS) return ModBlocks.TEMP_WEB.get().defaultBlockState();
         return Blocks.COBWEB.defaultBlockState();
     }
 }
