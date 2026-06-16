@@ -15,11 +15,13 @@ public final class Config {
     private static final ForgeConfigSpec.BooleanValue NORMAL_SPIDER_CAN_SHOOT_WEB_SPEC;
     private static final ForgeConfigSpec.BooleanValue APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE_SPEC;
     private static final ForgeConfigSpec.BooleanValue TEMPORARY_WEB_BLOCKS_SPEC;
+    private static final ForgeConfigSpec.DoubleValue TEMPORARY_WEB_RANDOM_DESTROY_CHANCE_SPEC;
 
     public static boolean CAVE_SPIDER_CAN_SHOOT_WEB = true;
     public static boolean NORMAL_SPIDER_CAN_SHOOT_WEB = true;
     public static boolean APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE = false;
     public static boolean TEMPORARY_WEB_BLOCKS = false;
+    public static float TEMPORARY_WEB_RANDOM_DESTROY_CHANCE = 0.2f;
 
     static {
         BUILDER.push("general");
@@ -39,6 +41,10 @@ public final class Config {
         TEMPORARY_WEB_BLOCKS_SPEC = BUILDER
                 .comment("If true, cobweb blocks placed by spider projectiles do not drop string when broken, and it will disappear after a period of time.")
                 .define("temporaryWebBlocks", false);
+
+        TEMPORARY_WEB_RANDOM_DESTROY_CHANCE_SPEC = BUILDER
+                .comment("This value determines how long a temporary web would last. If you set the value to 1, it would be around 68 sec on average. The default value is 0.2, so it's around 340 sec.")
+                .defineInRange("temporaryWebRandomDestroyChance", 0.2, 0, 1);
 
         BUILDER.pop();
     }
@@ -62,5 +68,6 @@ public final class Config {
         NORMAL_SPIDER_CAN_SHOOT_WEB = NORMAL_SPIDER_CAN_SHOOT_WEB_SPEC.get();
         APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE = APPLY_SLOWNESS_WHEN_HIT_BY_COBWEB_PROJECTILE_SPEC.get();
         TEMPORARY_WEB_BLOCKS = TEMPORARY_WEB_BLOCKS_SPEC.get();
+        TEMPORARY_WEB_RANDOM_DESTROY_CHANCE = TEMPORARY_WEB_RANDOM_DESTROY_CHANCE_SPEC.get().floatValue();
     }
 }

@@ -1,5 +1,6 @@
 package com.vomiter.spidersshootwebs.block;
 
+import com.vomiter.spidersshootwebs.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -18,7 +19,7 @@ public class TemporaryCobweb extends WebBlock {
     }
 
     public void randomTick(@NotNull BlockState state, @NotNull ServerLevel serverLevel, @NotNull BlockPos pos, @NotNull RandomSource randomSource){
-        if(randomSource.nextFloat() < 0.2){
+        if(randomSource.nextFloat() < Config.TEMPORARY_WEB_RANDOM_DESTROY_CHANCE){
             serverLevel.destroyBlock(pos, true);
         }
     }
